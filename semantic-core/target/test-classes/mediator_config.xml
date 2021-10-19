@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SemanticMediator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<MediatedView dir = "mediated_view">
+		<name>Mediador</name>
+		<DomainOntology>domain_onto</DomainOntology> <!--Pasta contendo o arquivo ontologia .owl -->
+		<ExportedViews>exported_views</ExportedViews>
+		<LinksetViews>linkset_views</LinksetViews>
+		<FusionRules>fusion_rules</FusionRules>
+	</MediatedView>
+
+	<AppViews dir = "app_views">
+		<AppView>
+			<name>esus_sinasc</name>
+			<AppOntology>app_ontology</AppOntology>
+			<Filters>filters</Filters>
+		</AppView>
+	</AppViews> <!--Pasta onde as visões de aplicação serão armazenadas -->
+
+</SemanticMediator>

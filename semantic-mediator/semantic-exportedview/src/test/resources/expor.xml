@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<exported_views>
+
+	<exported_view>
+		<name>e-sus</name>
+		<ontoSource>esus.owl</ontoSource>
+		<mappings>esus.ttl</mappings>
+	</exported_view>
+
+	<exported_view>
+		<name>sinasc</name>
+		<ontoSource>sinasc.owl</ontoSource>
+		<mappings>sinasc.ttl</mappings>
+	</exported_view>
+	
+</exported_views>

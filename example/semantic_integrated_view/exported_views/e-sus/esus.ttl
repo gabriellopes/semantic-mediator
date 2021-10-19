@@ -1,0 +1,171 @@
+@prefix map: <#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix gissa: <http://www.atlantico.com.br#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+map:Pessoa a rr:TriplesMap;
+	rr:logicalTable [ 
+		rr:sqlQuery """
+			SELECT	co_unico_ficha, no_pessoa, dt_nascimento, nu_idade, 
+					nu_cns_pessoa, no_sexo, no_raca_cor, co_municipio
+			FROM tb_pessoa 
+		""" 
+	] ;
+    rr:subjectMap [ 
+    	rr:class gissa:Pessoa;
+    	rr:template "http://www.atlantico.com.br#Pessoa/{CO_UNICO_FICHA}";
+    ];
+    #rr:predicateObjectMap [
+    #    rr:predicate rdf:type;
+    #    rr:objectMap [ rr:template "http://www.atlantico.com.br#Pessoa/{CO_UNICO_FICHA}"; ];
+    #];
+    rr:predicateObjectMap [
+        rr:predicate gissa:nomeCompleto;
+        rr:objectMap [ rr:column '"no_pessoa"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:dataNascimento;
+        rr:objectMap [ rr:column '"dt_nascimento"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:idadeReal;
+        rr:objectMap [ rr:column '"nu_idade"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:cns;
+        rr:objectMap [ rr:column '"nu_cns_pessoa"'; ];
+    ];
+    rr:predicateObjectMap [
+    	rr:predicate rdfs:label;
+    	rr:object "Teste2"@en;
+    ];
+    .
+
+############
+# GESTANTE #
+############
+
+map:Gestante a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and gestante = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:Gestante];
+	]
+	.
+
+###########
+# FUMANTE #
+###########
+
+map:Fumante a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and fumante = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:Fumante];
+	]
+	.
+
+##################
+# USUARIO_ALCOOL #
+##################
+
+map:UsuarioDeAlcool a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and alcool = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:UsuarioDeAlcool];
+	]
+	.
+
+##################
+# USUARIO_DROGAS #
+##################
+
+map:UsuarioDeDrogas a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and drogas = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:UsuarioDeDrogas];
+	]
+	.
+
+##############
+# HIPERTENSO #
+##############
+
+map:Hipertenso a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and hipertensao = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:Hipertenso];
+	]
+	.
+
+############
+# DIABETES #
+############
+
+map:Diabetico a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT	p.co_unico_ficha, fumante
+			FROM tb_detalhe_pessoa d, tb_pessoa p
+			WHERE p.co_unico_ficha = d.co_unico_ficha and diabetes = 1;
+		"""
+	];
+	rr:subjectMap [
+		rr:template "#Pessoa/{CO_UNICO_FICHA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate rdf:type;
+		rr:objectMap [ rr:template gissa:Diabetico];
+	]
+	.
+

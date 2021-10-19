@@ -1,0 +1,91 @@
+@prefix : <http://www.atlantico.com.br#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gissa: <http://www.atlantico.com.br#> .
+
+###  http://www.atlantico.com.br#naturalidade
+
+gissa:codigoNaturalidadeIBGE rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain gissa:Pessoa ;
+
+                   rdfs:range xsd:string ;
+
+                   rdfs:label "Código IBGE da UF de naturalidade"@pt .
+
+###  http://www.atlantico.com.br#altura
+
+gissa:altura rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain gissa:Pessoa ;
+             
+             rdfs:range xsd:integer .
+
+###  http://www.atlantico.com.br#codigoResidenciaIBGE
+
+gissa:codigoResidenciaIBGE  rdf:type owl:DatatypeProperty ;
+
+                            rdfs:domain gissa:Pessoa ;
+
+                            rdfs:range xsd:integer .
+
+###  http://www.atlantico.com.br#cns
+
+gissa:cns rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain gissa:Pessoa ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://www.atlantico.com.br#dataNascimento
+
+gissa:dataNascimento rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain gissa:Pessoa ;
+                     
+                     rdfs:range xsd:dateTime .
+
+
+###  http://www.atlantico.com.br#idadeReal
+
+gissa:idadeReal rdf:type owl:DatatypeProperty ;
+                
+                rdfs:domain gissa:Pessoa ;
+                
+                rdfs:range xsd:integer ;
+                
+                rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.atlantico.com.br#nomeCompleto
+
+gissa:nomeCompleto rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain gissa:Pessoa ;
+                   
+                   rdfs:range xsd:string .
+
+
+###  http://www.atlantico.com.br#peso
+
+gissa:peso rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain gissa:Pessoa ;
+           
+           rdfs:range xsd:integer ;
+           
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+gissa:Pessoa rdf:type owl:Class .
+
+gissa:Diabetico rdf:type owl:Class ;
+
+                rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+

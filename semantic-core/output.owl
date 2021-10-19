@@ -1,0 +1,164 @@
+@prefix gissa: <http://www.atlantico.com.br#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+rdfs:domain  a       rdfs:Resource , rdf:Property ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+owl:DatatypeProperty  a  rdfs:Resource , rdfs:Class .
+
+owl:ObjectProperty  a  rdfs:Resource , rdfs:Class .
+
+rdfs:comment  a     rdfs:Resource , rdf:Property ;
+        rdfs:range  rdfs:Literal .
+
+gissa:Pessoa  a          rdfs:Resource , owl:Class , rdfs:Class ;
+        rdfs:subClassOf  gissa:Pessoa , rdfs:Resource .
+
+rdf:first  a                rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:List ;
+        rdfs:subPropertyOf  rdf:first .
+
+gissa:peso  a               rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain         gissa:Pessoa ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  gissa:peso , owl:topDataProperty .
+
+rdf:object  a               rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:object .
+
+rdfs:subPropertyOf  a  rdfs:Resource , rdf:Property ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdf:Property .
+
+rdf:Alt  a               rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Container , rdf:Alt .
+
+owl:Class  a    rdfs:Resource , rdfs:Class .
+
+rdf:List  a              rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:Statement  a         rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:Seq  a               rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Container , rdf:Seq .
+
+gissa:codigoNaturalidadeIBGE
+        a            rdfs:Resource , rdf:Property , owl:ObjectProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:label   "Código IBGE da UF de naturalidade"@pt ;
+        rdfs:range   xsd:string .
+
+rdfs:ContainerMembershipProperty
+        a                rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdf:Property , rdfs:ContainerMembershipProperty .
+
+rdf:Property  a          rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdf:Property , rdfs:Resource .
+
+rdf:XMLLiteral  a  rdfs:Resource , rdfs:Class , rdfs:Datatype .
+
+gissa:cns  a         rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:string .
+
+rdf:nil  a      rdfs:Resource , rdf:List .
+
+rdfs:range  a        rdfs:Resource , rdf:Property ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+rdfs:isDefinedBy  a         rdfs:Resource , rdf:Property ;
+        rdfs:subPropertyOf  rdfs:seeAlso , rdfs:isDefinedBy .
+
+rdfs:Container  a        rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Container .
+
+rdf:Bag  a               rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Container , rdf:Bag .
+
+rdfs:label  a       rdfs:Resource , rdf:Property ;
+        rdfs:range  rdfs:Literal .
+
+gissa:codigoResidenciaIBGE
+        a            rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:integer .
+
+xsd:dateTime  a          rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  xsd:dateTime , rdfs:Resource .
+
+gissa:dataNascimento  a  rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:dateTime .
+
+rdf:predicate  a            rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:predicate .
+
+gissa:nomeCompleto  a  rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:string .
+
+gissa:Diabetico  a       rdfs:Resource , rdfs:Class , owl:Class ;
+        rdfs:subClassOf  gissa:Diabetico , gissa:PortadorDeDoencaCronica .
+
+rdfs:subClassOf  a   rdfs:Resource , rdf:Property ;
+        rdfs:domain  rdfs:Class ;
+        rdfs:range   rdfs:Class .
+
+rdfs:Resource  a         rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:rest  a                 rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:List ;
+        rdfs:range          rdf:List ;
+        rdfs:subPropertyOf  rdf:rest .
+
+owl:topDataProperty  a      rdfs:Resource , rdf:Property ;
+        rdfs:subPropertyOf  owl:topDataProperty .
+
+rdf:type  a         rdfs:Resource , rdf:Property ;
+        rdfs:range  rdfs:Class .
+
+rdfs:Class  a            rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Class , rdfs:Resource .
+
+gissa:idadeReal  a          rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain         gissa:Pessoa ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  gissa:idadeReal , owl:topDataProperty .
+
+rdfs:Datatype  a         rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Class , rdfs:Datatype .
+
+gissa:altura  a      rdfs:Resource , rdf:Property , owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:integer .
+
+gissa:PortadorDeDoencaCronica
+        a                rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+rdf:subject  a              rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:subject .
+
+rdfs:seeAlso  a             rdfs:Resource , rdf:Property ;
+        rdfs:subPropertyOf  rdfs:seeAlso .
+
+xsd:integer  a           rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  xsd:integer , rdfs:Resource .
+
+rdfs:Literal  a          rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Resource .
+
+xsd:string  a            rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  xsd:string , rdfs:Resource .

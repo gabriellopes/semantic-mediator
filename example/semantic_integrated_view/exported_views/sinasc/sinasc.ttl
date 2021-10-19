@@ -1,0 +1,235 @@
+@prefix map: <#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix gissa: <http://www.atlantico.com.br#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+
+################
+#  TABELA MÃE  #
+################
+map:Mae a rr:TriplesMap;
+	rr:logicalTable [
+		rr:sqlQuery """
+			SELECT * 
+			FROM tb_mae;
+		"""
+	];
+	rr:subjectMap [ 
+    	rr:class gissa:Mae; 
+    	rr:template "http://www.atlantico.com.br#Mae/{CO_SEQ_DN}"; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type;
+        rr:objectMap [ rr:template "http://www.atlantico.com.br#Pessoa";  ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:cns;
+        rr:objectMap [ rr:column '"nu_cartao_sus"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:nomeCompleto;
+        rr:objectMap [ rr:column '"no_mae"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:dataNascimento;
+        rr:objectMap [ rr:column '"dt_nascimento_mae"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:idadeReal;
+        rr:objectMap [ rr:column '"nu_idade"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:numeroNascidosMortos;
+        rr:objectMap [ rr:column '"qt_nascidos_mortos"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:numeroNascidosVivos;
+        rr:objectMap [ rr:column '"qt_nascidos_vivos"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:quantidadeGestacoesAnteriores;
+        rr:objectMap [ rr:column '"qt_gestacao_anterior"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:quantidadeAborto;
+        rr:objectMap [ rr:column '"qt_perdafetal_aborto"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate foaf:based_near;
+        rr:objectMap [ 
+        	rr:parentTriplesMap map:Municipio;
+        	rr:joinCondition [
+        		rr:child "co_municipio_ibge_residencia";
+        		rr:parent "co_municipio_ibge_residencia";
+        	];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:codigoNaturalidadeIBGE;
+        rr:objectMap [ rr:column '"co_uf_ibge_naturalidade"'; ];
+    ];
+
+    #Object property qeu vai de Mãe => Gestação.
+    rr:predicateObjectMap [
+        rr:predicate gissa:gestacao;
+        rr:objectMap [
+            rr:parentTriplesMap map:Gestacao;
+            rr:joinCondition [
+                rr:child "NO_MAE";
+                rr:parent "NO_MAE";
+            ];
+        ];
+    ];
+
+    .
+#######################
+#   TABELA MUNICÍPIO  #
+#######################
+
+map:Municipio a rr:TriplesMap;
+	rr:logicalTable [ 
+		rr:sqlQuery """
+			SELECT distinct co_municipio_ibge_residencia
+			FROM tb_mae;
+		"""
+	];
+	rr:subjectMap [
+		rr:class gissa:Municipio;
+		rr:template "http://www.atlantico.com.br#Municipio/{CO_MUNICIPIO_IBGE_RESIDENCIA}";
+	];
+	rr:predicateObjectMap [
+		rr:predicate gissa:codigoResidenciaIBGE;
+		rr:objectMap [ rr:column '"co_municipio_ibge_residencia"'];
+	];
+	.
+
+#######################
+#    TABELA GESTAÇÃO  #
+#######################
+
+map:Gestacao a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName '"tb_gestacao"'];
+    rr:subjectMap [ 
+        rr:class gissa:Gestacao; 
+        rr:template "http://www.atlantico.com.br#Gestacao/{CO_SEQ_DN}"; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:mesInicioPrenatal;
+        rr:objectMap [ rr:column '"nu_mes_gestacao_prenatal"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:numeroConsultasPreNatal;
+        rr:objectMap [ rr:column '"nu_consulta_prenatal"'; ];
+    ];
+    #Object Property gestante que vai de Gestação => Mae
+    rr:predicateObjectMap [
+        rr:predicate gissa:gestante;
+        rr:objectMap [ 
+            rr:parentTriplesMap map:Mae;
+            rr:joinCondition [
+                rr:child "NO_MAE";
+                rr:parent "NO_MAE";
+            ];
+        ];
+    ];
+
+    rr:predicateObjectMap [
+        rr:predicate gissa:nascido;
+        rr:objectMap [ 
+            rr:parentTriplesMap map:Nascimento;
+            rr:joinCondition [
+                rr:child "NU_DN";
+                rr:parent "NU_DN";
+            ];
+        ];
+    ];
+    .    
+
+
+#######################
+#  TABELA NASCIMENTO  # 
+#######################
+
+map:Nascimento a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName '"tb_nascido"'];
+    rr:subjectMap [ 
+        rr:class gissa:Nascimento; 
+        rr:template "http://www.atlantico.com.br#Nascimento/{NU_DN}"; 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:peso;
+        rr:objectMap [ rr:column '"nu_peso"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:dataNascimento;
+        rr:objectMap [ rr:column '"dt_nascimento"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:nu_apgar1;
+        rr:objectMap [ rr:column '"nu_apgar1"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:nu_apgar5;
+        rr:objectMap [ rr:column '"nu_apgar5"'; ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:stMalFormacao;
+        rr:objectMap [ rr:column '"st_malformacao"'; ];
+    ];
+
+    #Object Property qeu vai de NASCIMENTO gissa:gestacaoOrigem GESTACAO
+    rr:predicateObjectMap [
+        rr:predicate gissa:gestacaoOrigem;
+        rr:objectMap [
+            rr:parentTriplesMap map:Gestacao;
+            rr:joinCondition [
+                rr:child "NU_DN";
+                rr:parent "NU_DN";
+            ];
+        ];
+    ];
+
+    #Object Property que vai de NASCIMENTO gissa:temMalFormacao MALFORMACAO
+    rr:predicateObjectMap [
+       rr:predicate gissa:temMalFormacao;
+        rr:objectMap [
+            rr:parentTriplesMap map:MalFormacao;
+            rr:joinCondition [
+                rr:child "NU_DN";
+                rr:parent "NU_DN";
+            ];
+        ];
+    ];
+    .
+    
+################################
+#     Table tb_mal_formacao    #
+################################
+
+map:MalFormacao a rr:TriplesMap;
+    rr:logicalTable [ rr:tableName '"tb_mal_formacao"'];
+    rr:subjectMap [
+        rr:class gissa:MalFormacao;
+        rr:template "http://www.atlantico.com.br#MalFormacao/{CO_CID}";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate gissa:cid10;
+        rr:objectMap [
+            rr:column '"co_cid"';
+        ];
+    ];
+    #Object PRoperty de MALFORMACAO gissa:nascidoMalFormado NASCIMENTO
+    rr:predicateMap [
+        rr:predicate gissa:nascidoMalFormado;
+        rr:objectMap [
+            rr:parentTriplesMap map:Nascimento;
+            rr:joinCondition [
+                rr:child "NU_DN";
+                rr:parent "NU_DN";
+            ];
+        ];
+    ];
+    .

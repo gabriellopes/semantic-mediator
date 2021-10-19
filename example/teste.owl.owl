@@ -1,0 +1,51 @@
+@prefix :      <http://www.atlantico.com.br#> .
+@prefix gissa: <http://www.atlantico.com.br#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+gissa:nomeCompleto  a  owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:string .
+
+gissa:codigoNaturalidadeIBGE
+        a            owl:ObjectProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:label   "Código IBGE da UF de naturalidade"@pt ;
+        rdfs:range   xsd:string .
+
+gissa:codigoResidenciaIBGE
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:integer .
+
+gissa:peso  a               owl:DatatypeProperty ;
+        rdfs:domain         gissa:Pessoa ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  owl:topDataProperty .
+
+gissa:altura  a      owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:integer .
+
+gissa:dataNascimento  a  owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:dateTime .
+
+gissa:Diabetico  a       owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+gissa:Fumante  a  owl:Class .
+
+gissa:cns  a         owl:DatatypeProperty ;
+        rdfs:domain  gissa:Pessoa ;
+        rdfs:range   xsd:string .
+
+gissa:idadeReal  a          owl:DatatypeProperty ;
+        rdfs:domain         gissa:Pessoa ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  owl:topDataProperty .
+
+gissa:Pessoa  a  owl:Class .

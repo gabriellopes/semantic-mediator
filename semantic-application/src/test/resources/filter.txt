@@ -1,0 +1,7 @@
+FILTER = gissa:Pessoa/idadeReal > 20
+FILTER = gissa:Pessoa/idadeReal<=20
+FILTER = gissa:Pessoa/idadeReal=20
+FILTER = gissa:Pessoa/idadeReal!=20
+FILTER = gissa:Pessoa/idadeReal>=20
+FILTER = gissa:Pessoa/idadeReal<20
+

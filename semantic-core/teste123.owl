@@ -1,0 +1,79 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.atlantico.com.br#Gestante>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#UsuarioDeAlcool>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeDoencaCronica>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#SobreviventeDeAVC>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeCancer>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Nascimento>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#MalFormacao>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeInsuficienciaCardiaca>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Mulher>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Hipertenso>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Raca>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Fumante>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Diabetico>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Risco>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeDoencaRespiratoria>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Pessoa>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Homem>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#SobreviventeDeInfarto>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Gestacao>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeDoencaCardiaca>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Sobrevivente>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#PortadorDeDoencaRenal>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#SobreviventeDeCancer>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#UsuarioDeDrogas>
+        a       owl:Class .
+
+<http://www.atlantico.com.br#Mae>
+        a       owl:Class .

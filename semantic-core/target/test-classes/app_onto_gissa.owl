@@ -1,0 +1,618 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gissa: <http://www.atlantico.com.br#> .
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+gissa:temMalFormacao  rdf:type owl:ObjectProperty ;
+
+                      rdfs:domain gissa:Nascimento;
+
+                      rdfs:range gissa:MalFormacao;
+                      
+                      rdfs:label "Nascimento com mal formacao"@pt .
+                    
+
+gissa:nascidoMalFormado  rdf:type owl:ObjectProperty ;
+
+                      rdfs:domain gissa:MalFormacao;
+
+                      rdfs:range gissa:Nascimento ;
+
+                      owl:inverseOf gissa:temMalFormacao ;
+
+                      rdfs:label "Nascidos com mal formacao" .
+                  
+
+
+###  http://www.atlantico.com.br#gestacao
+
+gissa:gestacao rdf:type owl:ObjectProperty ;
+               
+               rdfs:range gissa:Gestacao ;
+               
+               rdfs:domain gissa:Mulher ;
+               
+               rdfs:subPropertyOf gissa:evento ;
+               
+               owl:inverseOf gissa:gestante .
+
+
+
+###  http://www.atlantico.com.br#gestacaoOrigem
+
+gissa:gestacaoOrigem rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:range gissa:Gestacao ;
+                     
+                     rdfs:domain gissa:Nascimento ;
+                     
+                     rdfs:subPropertyOf gissa:temporal .
+
+
+
+###  http://www.atlantico.com.br#gestante
+
+gissa:gestante rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain gissa:Gestacao ;
+               
+               rdfs:range gissa:Mulher ;
+               
+               rdfs:subPropertyOf gissa:participante .
+
+
+###  http://www.atlantico.com.br#municipio
+
+gissa:municipio rdf:type owl:ObjectProperty ;
+                
+                rdfs:subPropertyOf gissa:parteFuncional .
+
+
+
+###  http://www.atlantico.com.br#nascido
+
+gissa:nascido rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain gissa:Nascimento ;
+              
+              rdfs:range gissa:Pessoa ;
+              
+              rdfs:subPropertyOf gissa:participante .
+
+
+
+###  http://www.atlantico.com.br#nascimento
+
+gissa:nascimento rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:range gissa:Nascimento ;
+                 
+                 rdfs:domain gissa:Pessoa ;
+                 
+                 rdfs:subPropertyOf gissa:evento ;
+                 
+                 owl:inverseOf gissa:nascido .
+
+
+
+
+
+
+###  http://www.atlantico.com.br#pai
+
+gissa:pai rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ,
+                   owl:ObjectProperty ;
+          
+          rdfs:range gissa:Pai ;
+          
+          rdfs:domain gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#raca
+
+gissa:raca rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain gissa:Pessoa ;
+           
+           rdfs:range gissa:Raca ;
+           
+           rdfs:subPropertyOf gissa:classificacao .
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+###  http://www.atlantico.com.br#naturalidade
+
+gissa:codigoNaturalidadeIBGE rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:domain gissa:Pessoa ;
+
+                   rdfs:range xsd:string ;
+
+                   rdfs:label "Código IBGE da UF de naturalidade"@pt .
+
+
+gissa:quantidadeGestacoesAnteriores rdf:type owl:DatatypeProperty;
+
+                                    rdfs:domain gissa:Mulher;
+
+                                    rdfs:range xsd:integer ;
+
+                                    rdfs:label "Quantidade de gestações anteriores"@pt .
+
+
+gissa:quantidadeAbortoAnteriores rdf:type owl:DatatypeProperty;
+
+                                    rdfs:domain gissa:Mulher;
+
+                                    rdfs:range xsd:integer ;
+
+                                    rdfs:label "Quantidade de gestações que evoluíram para aborto"@pt .
+
+### http://www.atlantico.com.br#
+
+gissa:cid10 rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain gissa:MalFormacao;
+
+                  rdfs:range xsd:string ;
+
+                  rdfs:label "Código CID10 da mal formação"@pt .
+
+
+
+###  http://www.atlantico.com.br#altura
+
+gissa:altura rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain gissa:Pessoa ;
+             
+             rdfs:range xsd:integer .
+
+
+
+###  http://www.atlantico.com.br#apgar1Minuto
+
+gissa:apgar1Minuto rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain gissa:Nascimento ;
+                   
+                   rdfs:range xsd:integer .
+
+
+
+###  http://www.atlantico.com.br#apgar5Minuto
+
+gissa:apgar5Minuto rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain gissa:Nascimento ;
+                   
+                   rdfs:range xsd:integer .
+
+
+###  http://www.atlantico.com.br#codigoResidenciaIBGE
+
+gissa:codigoResidenciaIBGE  rdf:type owl:DatatypeProperty ;
+
+                            rdfs:domain gissa:Pessoa ;
+
+                            rdfs:range xsd:integer .
+
+###  http://www.atlantico.com.br#cns
+
+gissa:cns rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain gissa:Pessoa ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://www.atlantico.com.br#dataNascimento
+
+gissa:dataNascimento rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain gissa:Pessoa ;
+                     
+                     rdfs:range xsd:dateTime .
+
+
+
+
+###  http://www.atlantico.com.br#idadeReal
+
+gissa:idadeReal rdf:type owl:DatatypeProperty ;
+                
+                rdfs:domain gissa:Pessoa ;
+                
+                rdfs:range xsd:integer ;
+                
+                rdfs:subPropertyOf owl:topDataProperty .
+
+###  http://www.atlantico.com.br#mesInicioPrenatal
+
+gissa:mesInicioPrenatal rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain gissa:Gestacao ;
+                        
+                        rdfs:range xsd:integer .
+
+
+
+###  http://www.atlantico.com.br#nomeCompleto
+
+gissa:nomeCompleto rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain gissa:Pessoa ;
+                   
+                   rdfs:range xsd:string .
+
+
+
+###  http://www.atlantico.com.br#numeroConsultasPrenatal
+
+gissa:numeroConsultasPreNatal rdf:type owl:DatatypeProperty ;
+
+                              rdfs:domain gissa:Gestacao ;
+
+                              rdfs:range xsd:integer .
+
+
+###  http://www.atlantico.com.br#numeroNascidosMortos
+
+gissa:numeroNascidosMortos rdf:type owl:DatatypeProperty ;
+                           
+                           rdfs:domain gissa:Mulher ;
+                           
+                           rdfs:range xsd:integer .
+
+
+
+###  http://www.atlantico.com.br#numeroNascidosVivos
+
+gissa:numeroNascidosVivos rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:domain gissa:Mulher ;
+                          
+                          rdfs:range xsd:integer .
+
+
+
+###  http://www.atlantico.com.br#peso
+
+gissa:peso rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain gissa:Pessoa ;
+           
+           rdfs:range xsd:integer ;
+           
+           rdfs:subPropertyOf owl:topDataProperty .
+
+
+
+###  http://www.atlantico.com.br#pesoAoNascer
+
+gissa:pesoAoNascer rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain gissa:Nascimento ;
+                   
+                   rdfs:range xsd:integer .
+
+
+###  http://www.atlantico.com.br#uf
+
+gissa:uf rdf:type owl:DatatypeProperty ;
+         
+         rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+gissa:MalFormacao rdf:type owl:Class ;
+                  
+                  rdfs:label "Classe que define uma Mal Formação"@pt .
+
+###  http://www.atlantico.com.br#Diabetico
+
+gissa:Diabetico rdf:type owl:Class ;
+                
+                rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+###  http://www.atlantico.com.br#Fumante
+
+gissa:Fumante rdf:type owl:Class ;
+              
+              rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#Gestacao
+
+gissa:Gestacao rdf:type owl:Class ;
+               
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:unionOf ( gissa:GestacaoDupla
+                                                   gissa:GestacaoMultipla
+                                                   gissa:GestacaoUnica
+                                                 )
+                                   ] ;
+               
+               rdfs:subClassOf gissa:Evento .
+
+###  http://www.atlantico.com.br#Gestante
+
+gissa:Gestante rdf:type owl:Class ;
+               
+               rdfs:subClassOf gissa:Mulher .
+
+
+###  http://www.atlantico.com.br#Hipertenso
+
+gissa:Hipertenso rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf gissa:PortadorDeDoencaCardiaca .
+
+
+
+###  http://www.atlantico.com.br#Homem
+
+gissa:Homem rdf:type owl:Class ;
+            
+            rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#Mae
+
+gissa:Mae rdf:type owl:Class ;
+          
+          rdfs:subClassOf gissa:Mulher .
+
+
+
+###  http://www.atlantico.com.br#Mulher
+
+gissa:Mulher rdf:type owl:Class ;
+             
+             rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#Nascimento
+
+gissa:Nascimento rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf gissa:Evento .
+
+
+
+
+###  http://www.atlantico.com.br#PortadorDeCancer
+
+gissa:PortadorDeCancer rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+
+
+###  http://www.atlantico.com.br#PortadorDeDoencaCardiaca
+
+gissa:PortadorDeDoencaCardiaca rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+
+
+###  http://www.atlantico.com.br#PortadorDeDoencaCronica
+
+gissa:PortadorDeDoencaCronica rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#PortadorDeDoencaRenal
+
+gissa:PortadorDeDoencaRenal rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+
+
+###  http://www.atlantico.com.br#PortadorDeDoencaRespiratoria
+
+gissa:PortadorDeDoencaRespiratoria rdf:type owl:Class ;
+                                   
+                                   rdfs:subClassOf gissa:PortadorDeDoencaCronica .
+
+
+###  http://www.atlantico.com.br#PortadorDeInsuficienciaCardiaca
+
+gissa:PortadorDeInsuficienciaCardiaca rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf gissa:PortadorDeDoencaCardiaca .
+
+###  http://www.atlantico.com.br#Raca
+
+gissa:Raca rdf:type owl:Class ;
+           
+           owl:equivalentClass [ rdf:type owl:Class ;
+                                 owl:oneOf ( gissa:Preta
+                                             gissa:Parda
+                                             gissa:Amarela
+                                             gissa:Branca
+                                             gissa:Indigena
+                                           )
+                               ] ;
+           rdfs:label "Raça pessoa"@pt ;
+           
+           rdfs:subClassOf gissa:Powertype .
+
+
+
+###  http://www.atlantico.com.br#Risco
+
+gissa:Risco rdf:type owl:Class ;
+            
+            rdfs:subClassOf gissa:Powertype .
+
+
+
+###  http://www.atlantico.com.br#Sobrevivente
+
+gissa:Sobrevivente rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#SobreviventeDeAVC
+
+gissa:SobreviventeDeAVC rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf gissa:Sobrevivente .
+
+
+
+###  http://www.atlantico.com.br#SobreviventeDeCancer
+
+gissa:SobreviventeDeCancer rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf gissa:Sobrevivente .
+
+
+
+###  http://www.atlantico.com.br#SobreviventeDeInfato
+
+gissa:SobreviventeDeInfarto rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf gissa:Sobrevivente .
+
+
+
+###  http://www.atlantico.com.br#UsuarioDeAlcool
+
+gissa:UsuarioDeAlcool rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf gissa:Pessoa .
+
+
+
+###  http://www.atlantico.com.br#UsuarioDeDrogas
+
+gissa:UsuarioDeDrogas rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf gissa:Pessoa .
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+gissa:PartoPrematuro rdfs:label "Risco de Parto Prematuro"^^xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gissa:Ceará
+                        gissa:Pernambuco
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gissa:Asfaltado
+                        gissa:ChaoBatido
+                        gissa:Fluvial
+                        gissa:OutroTipoAcesso
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gissa:Alvenaria
+                        gissa:Madeira
+                        gissa:MaterialAproveitado
+                        gissa:Palha
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gissa:Amarela
+                        gissa:Branca
+                        gissa:Indigena
+                        gissa:Parda
+                        gissa:Preta
+                      )
+] .
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( gissa:Parto1
+                        gissa:Parto2
+                        gissa:Parto3
+                        gissa:Parto4
+                        gissa:Parto5
+                        gissa:Parto6
+                      )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( gissa:Gestacao
+                gissa:Nascimento
+                gissa:Parto
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( gissa:Evento
+                gissa:Objeto
+                gissa:Powertype
+                gissa:Propriedade
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( gissa:GestacaoDupla
+                gissa:GestacaoMultipla
+                gissa:GestacaoUnica
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( gissa:Acesso
+                gissa:MaterialDeConstrucao
+                gissa:Risco
+              )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

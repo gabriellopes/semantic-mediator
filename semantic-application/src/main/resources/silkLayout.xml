@@ -1,0 +1,34 @@
+<Silk>
+    <Prefixes>
+        <Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+        <Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+        <Prefix id="gissa" namespace="http://www.atlantico.com.br#"/>
+    </Prefixes>
+
+    <Interlinks>
+        <Interlink id="genes"> <!-- nome do LinksetView-->
+            <LinkType>owl:sameAs</LinkType> <!-- Tipo LinksetView-->
+
+            <SourceDataset dataSource="" var="a"> <!-- Exported View-->
+                <RestrictTo>?a rdf:type ex:ClasseSource_EV1</RestrictTo>  <!--Classe source da Exported View 1-->
+            </SourceDataset> <!--Essa classe, Cs, é uma classe na ontologia Source de EV1 que tem mapeamento para Ct (Target)-->
+
+            <TargetDataset dataSource="" var="b"> <!-- Exported View-->
+                <RestrictTo>?b rdf:type ex:ClassSource_EV2</RestrictTo> <!-- Classe source da Exported View 2-->
+            </TargetDataset>
+
+            <LinkageRule> <!-- Por enquanto, só serão comparados uma propriedade-->
+                <Aggregate type="max"> <!-- default-->
+                    <Compare metric="equality">
+                        <Input path="?a/smwprop:KeggDiseaseId" /> <!-- Propriedade EV_T para fazer o match-->
+                        <Input path="?b/smwprop:KeggDiseaseId" /> <!-- Propriedade EV_U para fazer o match-->
+                    </Compare>
+                </Aggregate>
+            </LinkageRule>
+
+            <Filter threshold="1.0" />
+
+        </Interlink>
+
+    </Interlinks>
+</Silk>

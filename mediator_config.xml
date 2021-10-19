@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<semanticMediator>
+
+	<views>
+		<mediated_view>
+			<name>Mediador</name>
+			<domain_ontology>domain_onto</domain_ontology> <!--Pasta contendo o arquivo ontologia .owl -->
+			<exported_views>exported_views</exported_views>
+			<linkset_views>linkset_views</linkset_views>
+			<fusion_rules>fusion_rules</fusion_rules>
+		</mediated_view>
+
+		<app_views>
+			<app_view>
+				<name>esus_sinasc</name>
+				<app_ontology>app_ontology</app_ontology>
+				<filters>filters</filters>
+			</app_view>
+		</app_views> <!--Pasta onde as visões de aplicação serão armazenadas -->
+	</views>
+</semanticMediator>

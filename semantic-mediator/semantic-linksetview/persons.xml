@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Versão do diseases.xml ldif/silk-->
+<!--
+ESPECIFICAÇÃO LINKSETVIEW LS = (ML, T, U, C, p1,...,pn, u), onde:
+ML -> nome;
+T -> Visão exportada T;
+U -> Visão Exportada U;
+C -> Classe Target, tal que E Ct pertencente a T ^ E MT: Ct -> C. O mesmo para U.
+p1,..,pn -> propriedade de C, tal que exista propriedades em T e U com mapeaemnto para pi.
+u -> Regras de link. match predicate
+-->
+
+<LinksetView>
+	<Prefixes>
+		<Prefix key="gissa" uri="https://www.atlantico.com.br#"/>
+		<Prefix key="owl" uri="http://www.w3.org/2002/07/owl#" />
+	</Prefixes>
+
+    <Linksets>
+        <Linkset id="persons"> <!--nome do Linksetview-->
+            <LinkType>owl:sameAs</LinkType>
+
+            <ExportedViews>
+                <ExportedView>e-sus</ExportedView>
+                <ExportedView>sinasc</ExportedView>
+            </ExportedViews>
+
+            <!--Solução temporária. Ainda não reflete todas possibilidades do SILK-->
+            <MatchPredicate metric="3-gram">
+                <Class>gissa:Pessoa</Class> <!--Classe que está em ambas ontologias exportadas-->
+                <Property>gissa:nomeCompleto</Property>
+            </MatchPredicate>
+
+        </Linkset>
+    </Linksets>
+</LinksetView>

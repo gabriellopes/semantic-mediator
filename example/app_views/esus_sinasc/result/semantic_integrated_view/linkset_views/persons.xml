@@ -1,0 +1,27 @@
+<Silk>
+	<Prefixes>
+		<Prefix id="gissa" namespace="https://www.atlantico.com.br#"/>
+		<Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+	</Prefixes>
+	<Interlinks>
+		<Interlink id="persons">
+			<LinkType>owl:sameAs</LinkType>
+			<SourceDataset dataSource="e-sus" var="a">
+				<RestrictTo>??a rdf:type sinasc</RestrictTo>
+			</SourceDataset>
+
+			<TargetDataset dataSource="gissa:Pessoa" var="b">
+				<RestrictTo>??b rdf:type gissa:Mae</RestrictTo>
+			</TargetDataset>
+
+			<LinkageRule>
+				<Aggregate type="max">
+					<Compare metric="3-gram">
+						<Input path="?a/gissa:nomeCompleto"/>
+						<Input path="?b/gissa:nomeCompleto"/>
+					</Compare>
+				</Aggregate>
+			</LinkageRule>
+		</Interlink>
+	</Interlinks>
+</Silk>

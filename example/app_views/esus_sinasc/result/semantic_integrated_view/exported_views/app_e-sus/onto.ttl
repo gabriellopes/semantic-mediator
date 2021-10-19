@@ -1,0 +1,80 @@
+@prefix rr:    <http://www.w3.org/ns/r2rml#> .
+@prefix gissa: <http://www.atlantico.com.br#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix map:   <file:///C:/Users/gabriellopes9102/Documents/IdeaProjects/semantic-framework/semantic-application/testMapping#> .
+
+map:Diabetico  a               rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "\r\n\t\t\tSELECT\tp.co_unico_ficha, fumante\r\n\t\t\tFROM tb_detalhe_pessoa d, tb_pessoa p\r\n\t\t\tWHERE p.co_unico_ficha = d.co_unico_ficha and diabetes = 1;\r\n\t\t"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:template  "http://www.atlantico.com.br#Diabetico" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  rdf:type
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "#Pessoa/{CO_UNICO_FICHA}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+map:Pessoa  a                  rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "\r\n\t\t\tSELECT\tco_unico_ficha, no_pessoa, dt_nascimento, nu_idade, \r\n\t\t\t\t\tnu_cns_pessoa, no_sexo, no_raca_cor, co_municipio\r\n\t\t\tFROM tb_pessoa \r\n\t\tWHERE idadeReal > 20"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:object     "Teste2" ;
+                                 rr:predicate  rdfs:label
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "\"nu_cns_pessoa\"" ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gissa:cns
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:TermMap , rr:ObjectMap ;
+                                                 rr:column    "\"no_pessoa\"" ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gissa:nomeCompleto
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "\"nu_idade\"" ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gissa:idadeReal
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:column    "\"dt_nascimento\"" ;
+                                                 rr:termType  rr:Literal
+                                               ] ;
+                                 rr:predicate  gissa:dataNascimento
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:class     gissa:Pessoa ;
+                                 rr:template  "http://www.atlantico.com.br#Pessoa/{CO_UNICO_FICHA}" ;
+                                 rr:termType  rr:IRI
+                               ] .
+
+map:Fumante  a                 rr:TriplesMap ;
+        rr:logicalTable        [ a            rr:R2RMLView ;
+                                 rr:sqlQuery  "\r\n\t\t\tSELECT\tp.co_unico_ficha, fumante\r\n\t\t\tFROM tb_detalhe_pessoa d, tb_pessoa p\r\n\t\t\tWHERE p.co_unico_ficha = d.co_unico_ficha and fumante = 1;\r\n\t\t"
+                               ] ;
+        rr:predicateObjectMap  [ a             rr:PredicateObjectMap ;
+                                 rr:objectMap  [ a            rr:ObjectMap , rr:TermMap ;
+                                                 rr:template  "http://www.atlantico.com.br#Fumante" ;
+                                                 rr:termType  rr:IRI
+                                               ] ;
+                                 rr:predicate  rdf:type
+                               ] ;
+        rr:subjectMap          [ a            rr:TermMap , rr:SubjectMap ;
+                                 rr:template  "#Pessoa/{CO_UNICO_FICHA}" ;
+                                 rr:termType  rr:IRI
+                               ] .

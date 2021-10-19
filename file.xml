@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Silk>
+    <Interlinks>
+        <Interlink id="persons"> <!-- nome do LinksetView-->
+            <LinkType>owl:sameAs</LinkType> <!-- Tipo LinksetView-->
+
+            <SourceDataset dataSource="e-sus" var="a"> <!-- Exported View-->
+                <RestrictTo>?a rdf:type gissa:Homem</RestrictTo>  <!--Classe source da Exported View 1-->
+            </SourceDataset> <!--Essa classe, Cs, é uma classe na ontologia Source de EV1 que tem mapeamento para Ct (Target)-->
+
+            <TargetDataset dataSource="sinasc" var="b"> <!-- Exported View-->
+                <RestrictTo>?b rdf:type gissa:Mae</RestrictTo> <!-- Classe source da Exported View 2-->
+            </TargetDataset>
+
+            <LinkageRule> <!-- Por enquanto, só serão comparados uma propriedade-->
+                <Aggregate type="max"> <!-- default-->
+                    <Compare metric="3-gram">
+                        <Input path="?a/gissa:nomeCompleto"/> <!-- Propriedade EV_T-->
+                        <Input path="?b/gissa:nomeCompleto"/> <!-- Propriedade EV_U-->
+                    </Compare>
+                </Aggregate>
+            </LinkageRule>
+
+            <Filter threshold="1.0"/>
+
+        </Interlink>
+
+    </Interlinks>
+</Silk>

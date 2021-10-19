@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/semantic-plugins/parser-sieve/parser-sieve.iml" filepath="$PROJECT_DIR$/semantic-plugins/parser-sieve/parser-sieve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-plugins/parser-silk/parser-silk.iml" filepath="$PROJECT_DIR$/semantic-plugins/parser-silk/parser-silk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-application/semantic-application.iml" filepath="$PROJECT_DIR$/semantic-application/semantic-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-core/semantic-core.iml" filepath="$PROJECT_DIR$/semantic-core/semantic-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-domain_ontology/semantic-domain_ontology.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-domain_ontology/semantic-domain_ontology.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-exportedview/semantic-exportedview.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-exportedview/semantic-exportedview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-framework.iml" filepath="$PROJECT_DIR$/semantic-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-fusion/semantic-fusion.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-fusion/semantic-fusion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-integrated_view/semantic-integrated_view.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-integrated_view/semantic-integrated_view.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-linksetview/semantic-linksetview.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-linksetview/semantic-linksetview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-mediator/semantic-mediator.iml" filepath="$PROJECT_DIR$/semantic-mediator/semantic-mediator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/semantic-plugins/semantic-plugins.iml" filepath="$PROJECT_DIR$/semantic-plugins/semantic-plugins.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,259 @@
+@prefix gissa: <http://www.atlantico.com.br#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix arida: <http://ufc.br/arida#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+gissa:gestacao  a           owl:ObjectProperty ;
+        rdfs:domain         gissa:Mulher ;
+        rdfs:range          gissa:Gestacao ;
+        rdfs:subPropertyOf  gissa:evento ;
+        owl:inverseOf       gissa:gestante .
+
+gissa:quantidadeGestacoesAnteriores
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Mulher ;
+        rdfs:label   "Quantidade de gestações anteriores"@pt ;
+        rdfs:range   xsd:integer .
+
+gissa:Gestante  a        owl:Class ;
+        rdfs:subClassOf  gissa:Mulher .
+
+gissa:Raca  a                owl:Class ;
+        rdfs:label           "Raça pessoa"@pt ;
+        rdfs:subClassOf      gissa:Powertype ;
+        owl:equivalentClass  [ a          owl:Class ;
+                               owl:oneOf  ( gissa:Preta gissa:Parda gissa:Amarela gissa:Branca gissa:Indigena )
+                             ] .
+
+gissa:peso  a               owl:DatatypeProperty ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  owl:topDataProperty .
+
+gissa:uf  a         owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+gissa:PortadorDeDoencaRespiratoria
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+gissa:mesInicioPrenatal
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Gestacao ;
+        rdfs:range   xsd:integer .
+
+[ a            owl:AllDisjointClasses ;
+  owl:members  ( gissa:Gestacao gissa:Nascimento gissa:Parto )
+] .
+
+gissa:SobreviventeDeAVC
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:Sobrevivente .
+
+gissa:codigoNaturalidadeIBGE
+        a           owl:ObjectProperty ;
+        rdfs:label  "Código IBGE da UF de naturalidade"@pt ;
+        rdfs:range  xsd:string .
+
+gissa:SobreviventeDeCancer
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:Sobrevivente .
+
+gissa:quantidadeAbortoAnteriores
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Mulher ;
+        rdfs:label   "Quantidade de gestações que evoluíram para aborto"@pt ;
+        rdfs:range   xsd:integer .
+
+gissa:Risco  a           owl:Class ;
+        rdfs:subClassOf  gissa:Powertype .
+
+gissa:numeroNascidosMortos
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Mulher ;
+        rdfs:range   xsd:integer .
+
+gissa:Gestacao  a            owl:Class ;
+        rdfs:subClassOf      gissa:Evento ;
+        owl:equivalentClass  [ a            owl:Class ;
+                               owl:unionOf  ( gissa:GestacaoDupla gissa:GestacaoMultipla gissa:GestacaoUnica )
+                             ] .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( gissa:Ceará gissa:Pernambuco )
+] .
+
+gissa:apgar5Minuto  a  owl:DatatypeProperty ;
+        rdfs:domain  gissa:Nascimento ;
+        rdfs:range   xsd:integer .
+
+gissa:cns  a        owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( gissa:Amarela gissa:Branca gissa:Indigena gissa:Parda gissa:Preta )
+] .
+
+gissa:PortadorDeDoencaRenal
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica ;
+        gissa:subclass   "Teste" .
+
+gissa:MalFormacao  a  owl:Class ;
+        rdfs:label  "Classe que define uma Mal Formação"@pt .
+
+gissa:nascido  a            owl:ObjectProperty ;
+        rdfs:domain         gissa:Nascimento ;
+        rdfs:subPropertyOf  gissa:participante .
+
+gissa:UsuarioDeDrogas
+        a       owl:Class .
+
+gissa:PortadorDeCancer
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( gissa:Alvenaria gissa:Madeira gissa:MaterialAproveitado gissa:Palha )
+] .
+
+gissa:Mulher  a  owl:Class .
+
+gissa:Mae  a             owl:Class ;
+        rdfs:subClassOf  gissa:Mulher .
+
+gissa:temMalFormacao  a  owl:ObjectProperty ;
+        rdfs:domain  gissa:Nascimento ;
+        rdfs:label   "Nascimento com mal formacao"@pt ;
+        rdfs:range   gissa:MalFormacao .
+
+gissa:PartoPrematuro  rdfs:label  "Risco de Parto Prematuro" .
+
+gissa:codigoResidenciaIBGE
+        a           owl:DatatypeProperty ;
+        rdfs:range  xsd:integer .
+
+gissa:Homem  a  owl:Class .
+
+gissa:pai  a        owl:ObjectProperty , owl:IrreflexiveProperty , owl:AsymmetricProperty ;
+        rdfs:range  gissa:Pai .
+
+gissa:dataNascimento  a  owl:DatatypeProperty ;
+        rdfs:range  xsd:dateTime .
+
+gissa:pesoAoNascer  a  owl:DatatypeProperty ;
+        rdfs:domain  gissa:Nascimento ;
+        rdfs:range   xsd:integer .
+
+gissa:nascimento  a         owl:ObjectProperty ;
+        rdfs:range          gissa:Nascimento ;
+        rdfs:subPropertyOf  gissa:evento ;
+        owl:inverseOf       gissa:nascido .
+
+gissa:nomeCompleto  a  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+gissa:numeroConsultasPreNatal
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Gestacao ;
+        rdfs:range   xsd:integer .
+
+arida:Fumante12356  a  owl:Class .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( gissa:Asfaltado gissa:ChaoBatido gissa:Fluvial gissa:OutroTipoAcesso )
+] .
+
+gissa:Diabetico  a       owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+gissa:cid10  a       owl:DatatypeProperty ;
+        rdfs:domain  gissa:MalFormacao ;
+        rdfs:label   "Código CID10 da mal formação"@pt ;
+        rdfs:range   xsd:string .
+
+[ a            owl:AllDisjointClasses ;
+  owl:members  ( gissa:Acesso gissa:MaterialDeConstrucao gissa:Risco )
+] .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( gissa:Parto1 gissa:Parto2 gissa:Parto3 gissa:Parto4 gissa:Parto5 gissa:Parto6 )
+] .
+
+gissa:nascidoMalFormado
+        a              owl:ObjectProperty ;
+        rdfs:domain    gissa:MalFormacao ;
+        rdfs:label     "Nascidos com mal formacao" ;
+        rdfs:range     gissa:Nascimento ;
+        owl:inverseOf  gissa:temMalFormacao .
+
+gissa:Fumante  a  owl:Class .
+
+gissa:gestacaoOrigem  a     owl:ObjectProperty ;
+        rdfs:domain         gissa:Nascimento ;
+        rdfs:range          gissa:Gestacao ;
+        rdfs:subPropertyOf  gissa:temporal .
+
+gissa:UsuarioDeAlcool
+        a       owl:Class .
+
+gissa:idadeReal  a          owl:DatatypeProperty ;
+        rdfs:range          xsd:integer ;
+        rdfs:subPropertyOf  owl:topDataProperty .
+
+gissa:raca  a               owl:ObjectProperty ;
+        rdfs:range          gissa:Raca ;
+        rdfs:subPropertyOf  gissa:classificacao .
+
+gissa:Sobrevivente  a  owl:Class .
+
+gissa:PortadorDeInsuficienciaCardiaca
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCardiaca .
+
+gissa:gestante  a           owl:ObjectProperty ;
+        rdfs:domain         gissa:Gestacao ;
+        rdfs:range          gissa:Mulher ;
+        rdfs:subPropertyOf  gissa:participante .
+
+gissa:altura  a     owl:DatatypeProperty ;
+        rdfs:range  xsd:integer .
+
+gissa:SobreviventeDeInfarto
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:Sobrevivente .
+
+gissa:Hipertenso  a      owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCardiaca .
+
+gissa:PortadorDeDoencaCronica
+        a       owl:Class .
+
+gissa:Nascimento  a      owl:Class ;
+        rdfs:subClassOf  gissa:Evento .
+
+gissa:numeroNascidosVivos
+        a            owl:DatatypeProperty ;
+        rdfs:domain  gissa:Mulher ;
+        rdfs:range   xsd:integer .
+
+gissa:municipio  a          owl:ObjectProperty ;
+        rdfs:subPropertyOf  gissa:parteFuncional .
+
+gissa:apgar1Minuto  a  owl:DatatypeProperty ;
+        rdfs:domain  gissa:Nascimento ;
+        rdfs:range   xsd:integer .
+
+gissa:PortadorDeDoencaCardiaca
+        a                owl:Class ;
+        rdfs:subClassOf  gissa:PortadorDeDoencaCronica .
+
+[ a            owl:AllDisjointClasses ;
+  owl:members  ( gissa:GestacaoDupla gissa:GestacaoMultipla gissa:GestacaoUnica )
+] .
+
+[ a            owl:AllDisjointClasses ;
+  owl:members  ( gissa:Evento gissa:Objeto gissa:Powertype gissa:Propriedade )
+] .

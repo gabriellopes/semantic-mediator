@@ -1,0 +1,21 @@
+<Sieve>
+	<Prefixes>
+		<Prefix id="gissa" namespace="https://www.atlantico.com.br#"/>
+		<Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+	</Prefixes>
+	<QualityAssessment>
+		<AssessmentMetric>
+			<ScoringFunction class="ScoredList">
+				<Param name="list" value="" />
+
+			</ScoringFunction>
+		</AssessmentMetric>
+	</QualityAssessment>
+	<Fusion>
+		<Class name="gissa:Pessoa">
+			<Property name="gissa:nomeCompleto">
+				<FusionFunction class="br.arida.ufc.fusion.impl.FusionFunctionImpl@9635fa" metric="sieve:reputation"/>
+			</Property>
+		</Class>
+	</Fusion>
+</Sieve>
